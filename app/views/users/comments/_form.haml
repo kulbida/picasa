@@ -1,0 +1,8 @@
+%div{:class => 'alert', :style => 'display:none;'}
+= form_for [current_user, comment], :remote => true do |f|
+  %div.fields
+    = f.label :text, 'Write a comment:'
+    = f.text_area :text, :style => 'width:95%;height:50px;'
+    = f.hidden_field :picture_id, :value => picture[:id]
+  %div{:style => 'text-align:center;'}
+    = f.submit('Comment this photo', :class => 'btn btn-success btn-large')

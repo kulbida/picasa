@@ -1,0 +1,14 @@
+%ul.breadcrumb
+  %li
+    = link_to "Home", root_path
+    %span.divider /
+  %li
+    = link_to "#{@user.username}'s albums", user_albums_path(@user)
+    %span.divider /
+  %li
+    Show album
+
+%fieldset
+  %legend Album Pictures:
+  - @album_pictutes.each_slice(4) do |pictures|
+    = render :partial => 'users/albums/pictures', :object => pictures

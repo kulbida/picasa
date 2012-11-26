@@ -1,0 +1,10 @@
+%li.span3
+  %div.thumbnail
+    %div.caption
+      %img{:src => "#{album[:photo_url]}"}
+      %h3= album[:title]
+      %p.created_at
+        created at:
+        = album[:published_at]
+      %div{:style => 'text-align:center;'}
+        = link_to 'view album', show_album_user_albums_path(@user, :album_url => album[:url]), :class => 'btn btn-small btn-success'

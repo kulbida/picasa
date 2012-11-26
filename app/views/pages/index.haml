@@ -1,0 +1,19 @@
+%ul.breadcrumb
+  %li
+    = link_to "Home", root_path
+    %span.divider /
+
+%fieldset
+  %legend= greet_user(current_user)
+  %ul.thumbnails
+    - @users.each do |user|
+      %li.span3
+        %div.thumbnail
+          %div.caption
+            %h3= user.username
+            %p.created_at
+              registered at:
+              = user.created_at
+            %div{:style => 'text-align:center;'}
+              %hr
+              = link_to 'Show user albums', user_albums_path(user), :class => 'btn btn-success'

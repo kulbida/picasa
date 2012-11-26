@@ -1,0 +1,16 @@
+%ul.breadcrumb
+  %li
+    = link_to "Home", root_path
+    %span.divider /
+  %li
+    = link_to "#{@user.username}'s albums", user_albums_path(@user)
+    %span.divider /
+
+%fieldset
+  %legend #{@user.username}'s Albums:
+  - if @user_albums.present?
+    %div.row-fluid
+      - @user_albums.each_slice(4).each do |albums|
+        = render :partial => 'users/albums/albums', :object => albums
+  - else
+    %p No albums were found.

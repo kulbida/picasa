@@ -1,0 +1,6 @@
+%p 
+  %b There are #{pictures.size} pictures in the album, but we'll show you only first 3.
+%ul.thumbnails
+  - pictures.first(3).each do |picture|
+    = render :partial => 'users/albums/picture', :object => picture
+= render :partial => 'users/albums/comments_list'

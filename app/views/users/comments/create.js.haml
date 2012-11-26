@@ -1,0 +1,7 @@
+- if @comment.new_record?
+  $('div.comments[data-id="#{@comment.picture_id}"]').parents('div.thumbnail').find('div.alert').html("#{inline_errors_messages(@comment.errors.full_messages)}").show();
+- else
+  $('div.comments[data-id="#{@comment.picture_id}"]').prepend("#{escape_javascript(render :partial => 'users/albums/comment', :object => @comment)}");
+  $('div.comments[data-id="#{@comment.picture_id}"]').parents('div.thumbnail').find('form').hide();
+  $('div.comments[data-id="#{@comment.picture_id}"]').parents('div.thumbnail').find('form').find('textarea#comment_text').val('');
+  $('div.comments[data-id="#{@comment.picture_id}"]').parents('div.thumbnail').find('div.alert').html("Thank you for the comment!").addClass('alert-success').show();

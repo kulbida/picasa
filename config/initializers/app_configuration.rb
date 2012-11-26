@@ -1,0 +1,1 @@
+APP_CONFIG = YAML.load_file("#{File.dirname(__FILE__)}/../application.yml")[Rails.env].symbolize_keys

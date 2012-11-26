@@ -1,0 +1,24 @@
+%div{:class => "navbar navbar-fixed-top"}
+  %div{:class => "navbar-inner"}
+    %div{:class => "container"}
+      %a{:class => "btn btn-navbar", :data => {:toggle => "collapse", :target => ".nav-collapse"} }
+        %span{:class => "icon-bar"}
+        %span{:class => "icon-bar"}
+        %span{:class => "icon-bar"}
+      %a{:class => "brand", :href => "/"} PicasaView
+
+      %div{:class => "nav-collapse"}
+        %ul.nav
+          %li= link_to "Welcome page", "/"
+          %li.divider-vertical
+          - unless current_user.present?
+            %li 
+              %a{:href => '/auth/google', :class => 'auth_provider'}
+                Please login
+                = image_tag "g.png", :size => "16x16", :alt => "Login via Google"
+          - else
+            %li
+              %a Hi #{current_user.username}
+            %li
+              = link_to 'Loguot', authentications_path, :method => :delete
+          %li.divider-vertical

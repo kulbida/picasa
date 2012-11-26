@@ -1,0 +1,15 @@
+@mixin comment_author_styles($text_color) {
+  p.author, p.created_at {
+    font-size:80%;
+    display:inline-block;
+    padding-left:5px;
+  }
+  p.created_at {
+    font-size:70%;
+    color:$text_color;
+  }
+  p.text {
+    border-top:1px solid #fefefe;
+    padding-top:5px;
+  }
+}

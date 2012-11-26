@@ -1,0 +1,18 @@
+%li.span4
+  %div.thumbnail
+    %div.caption
+      %h3= picture[:title]
+    %img{:src => "#{picture[:url]}"}
+    %div.caption
+      %p.created_at
+        created at:
+        = picture[:published_at]
+      = render :partial => 'users/comments/form', :locals => {:comment => @comment, :picture => picture}
+        
+      %div{:class => "comments", :data => {:id => "#{picture[:id]}"} }
+        - picture[:comments].first(5).each do |comment|
+          = render :partial => 'users/albums/comment', :object => comment
+        - if picture[:comments].present?
+          %p{:style => 'text-align:right;font-size:90%;'}
+            = image_tag('loader.gif', :class => 'loader hide')
+            %a{:href => "#modal", :role => "button", :class => "btn btn-small btn-warning", :rel => 'show_comments', :data => {:toggle => "modal", :id => "#{picture[:id]}"} } View all comments
